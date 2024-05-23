@@ -48,7 +48,7 @@ if (isset($_POST['login'])) {
     <div class="container">
       <div class="row gx-1">
       <div class="col"><input type="submit" value="Login" name="login" class="btn btn-primary btn-block"></div>
-        <div class="col"> <a href="multisave.php" class = "btn btn-danger btn-block" name = "signup">SignUp</a></div>
+        <div class="col"> <a href="register.php" class = "btn btn-danger btn-block" name = "register">Register</a></div>
       </div>
     </div>
   </form>
