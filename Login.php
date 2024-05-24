@@ -4,16 +4,36 @@ require_once('classes/database.php');
 $con = new database();
 session_start();
 
+
+// If the user is already logged in, check their account type and redirect accordingly
+// if (isset($_SESSION['user_name']) && isset($_SESSION['account_type'])) {
+//   if ($_SESSION['account_type'] == 0) {
+//     header('location:index3.php');
+//   } else if ($_SESSION['account_type'] == 1) {
+//     header('location:user_account.php');
+//   }
+//   exit();
+// }
+
 $error = ""; // Initialize error variable
 
+
 if (isset($_POST['login'])) {
+  $accounttype = $_POST['account_type'];
   $username = $_POST['user_name'];
   $password = $_POST['user_pass'];
-  $result = $con->check($username, $password);
+  $result = $con->check($accounttype,$username, $password);
 
   if ($result) {
       $_SESSION['user_name'] = $result['user_name'];
-      header('location:index2.php');
+      $_SESSION['account_type'] = $result['account_type'];
+      $_SESSION['user_id'] = $result['user_id'];
+      $_SESSION['user_profile_picture'] = $result['user_profile_picture'];
+      if($result['account_type']==0){
+        header('location:index3.php');
+      }else if($result['account_type']==1) {
+        header('location:user_account.php');
+      }
   } else {
       $error = "Incorrect username or password. Please try again.";
   }

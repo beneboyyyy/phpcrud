@@ -35,7 +35,7 @@ if ($password == $confirm) {
     //update user address
     if($con->updateUserAddress($user_id,$street,$barangay,$city,$province)) {
       // if both update is successful, redirect to a success page or display a success message
-      header('location:index2.php');
+      header('location:index3.php');
       exit() ;
   }else{
     // user address update failed
