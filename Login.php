@@ -28,7 +28,6 @@ if (isset($_POST['login'])) {
       $_SESSION['user_name'] = $result['user_name'];
       $_SESSION['account_type'] = $result['account_type'];
       $_SESSION['user_id'] = $result['user_id'];
-      $_SESSION['user_profile_picture'] = $result['user_profile_picture'];
       if($result['account_type']==0){
         header('location:index3.php');
       }else if($result['account_type']==1) {
